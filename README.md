@@ -11,7 +11,7 @@ The [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Poisso
 	<br>
 </div>
 
-where `lambda` is the mean parameter.
+where `lambda > 0` is the mean parameter.
 
 
 ## Installation
@@ -31,8 +31,8 @@ var mean = require( 'distributions-poisson-mean' );
 
 #### mean( lambda[, opts] )
 
-Computes the [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution with parameter `lambda` . `lambda` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
-
+Computes the [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution with parameter `lambda` . `lambda` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix). 
+ 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
 	data,
@@ -175,10 +175,16 @@ bool = ( mat === out );
 
 ## Notes
 
-*	If an element is __not__ a numeric value, the evaluated principal [square root](https://en.wikipedia.org/wiki/Square_root) is `NaN`.
+*	If an element is __not__ a positive number, the [expected value](https://en.wikipedia.org/wiki/Expected_value) is `NaN`.
 
 	``` javascript
-	var data, out;
+	var lambda, out;
+	
+	out = mean( -1 );
+	// returns NaN
+	
+	out = mean( 0 );
+	// returns NaN
 
 	out = mean( null );
 	// returns NaN
@@ -195,19 +201,19 @@ bool = ( mat === out );
 	function getValue( d, i ) {
 		return d.x;
 	}
-	data = [
+	lambda = [
 		{'x':true},
 		{'x':[]},
 		{'x':{}},
 		{'x':null}
 	];
 
-	out = mean( data, {
+	out = mean( lambda, {
 		'accessor': getValue
 	});
 	// returns [ NaN, NaN, NaN, NaN ]
 
-	out = mean( data, {
+	out = mean( lambda, {
 		'path': 'x'
 	});
 	/*
