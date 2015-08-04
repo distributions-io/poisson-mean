@@ -6,6 +6,9 @@
 var // Expectation library:
 	chai = require( 'chai' ),
 
+	// Validate whether a value is NaN
+	isnan = require( 'validate.io-nan'),
+
 	// Module to be tested:
 	mean = require( './../lib/number.js' );
 
@@ -29,6 +32,11 @@ describe( 'number mean', function tests() {
 		assert.strictEqual( mean( 4  ), 4 );
 		assert.strictEqual( mean( 8  ), 8 );
 		assert.strictEqual( mean( 16  ), 16 );
+	});
+
+	it( 'should return `NaN` for a non-positive lambda', function test() {
+		assert.isTrue( isnan( mean( -1 ) ) );
+		assert.isTrue( isnan( mean( 0 ) ) );
 	});
 
 });

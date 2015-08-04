@@ -6,7 +6,7 @@ Mean
 
 The [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="\mathbb{E}\left[ X \right] = " data-equation="eq:expectation">
+<div class="equation" align="center" data-raw-text="\mathbb{E}\left[ X \right] = \lambda" data-equation="eq:expectation">
 	<img src="" alt="Expected value for a Poisson distribution.">
 	<br>
 </div>
@@ -245,7 +245,7 @@ var data,
 // Plain arrays...
 data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i;
+	data[ i ] = i + 1;
 }
 out = mean( data );
 
@@ -276,7 +276,7 @@ out = mean( data, {
 // Typed arrays...
 data = new Int32Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i
+	data[ i ] = i + 1;
 }
 out = mean( data );
 

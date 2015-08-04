@@ -137,16 +137,16 @@ describe( 'compute-mean', function tests() {
 		lambda = [ 2, 4, 8, 16 ];
 		expected = [ 2, 4, 8, 16 ];
 
-		actual = mean( data );
-		assert.notEqual( actual, data );
+		actual = mean( lambda );
+		assert.notEqual( actual, lambda );
 		assert.deepEqual( actual, expected );
 
 		// Mutate...
-		actual = mean( data, {
+		actual = mean( lambda, {
 			'copy': false
 		});
-		assert.strictEqual( actual, data );
-		assert.deepEqual( data, expected );
+		assert.strictEqual( actual, lambda );
+		assert.deepEqual( lambda, expected );
 	});
 
 	it( 'should compute the distribution mean when provided a typed array', function test() {
@@ -155,17 +155,17 @@ describe( 'compute-mean', function tests() {
 		lambda = new Float64Array ( [ 2,4,8,16 ] );
 		expected = new Float64Array( [ 2,4,8,16 ] );
 
-		actual = mean( data );
-		assert.notEqual( actual, data );
+		actual = mean( lambda );
+		assert.notEqual( actual, lambda );
 		assert.deepEqual( actual, expected );
 
 		// Mutate:
-		actual = mean( data, {
+		actual = mean( lambda, {
 			'copy': false
 		});
 		expected = new Float64Array( [ 2,4,8,16 ] );
-		assert.strictEqual( actual, data );
-		assert.deepEqual( data, expected );
+		assert.strictEqual( actual, lambda );
+		assert.deepEqual( lambda, expected );
 	});
 
 	it( 'should compute the distribution mean and return an array of a specific type', function test() {
@@ -174,10 +174,10 @@ describe( 'compute-mean', function tests() {
 		lambda = [ 2, 4, 8, 16 ];
 		expected = new Int32Array( [ 2,4,8,16 ] );
 
-		actual = mean( data, {
+		actual = mean( lambda, {
 			'dtype': 'int32'
 		});
-		assert.notEqual( actual, data );
+		assert.notEqual( actual, lambda );
 		assert.strictEqual( actual.BYTES_PER_ELEMENT, 4 );
 		assert.deepEqual( actual, expected );
 	});
@@ -263,9 +263,9 @@ describe( 'compute-mean', function tests() {
 		d2 = new Float64Array( 25 );
 		d3 = new Int16Array( 25 );
 		for ( i = 0; i < d1.length; i++ ) {
-			d1[ i ] = i;
-			d2[ i ] = i;
-			d3[ i ] = i;
+			d1[ i ] = i + 1;
+			d2[ i ] = i + 1;
+			d3[ i ] = i + 1;
 		}
 		mat = matrix( d1, [5,5], 'int16' );
 		out = mean( mat );
@@ -290,8 +290,8 @@ describe( 'compute-mean', function tests() {
 		d1 = new Int16Array( 25 );
 		d2 = new Float32Array( 25 );
 		for ( i = 0; i < d1.length; i++ ) {
-			d1[ i ] = i;
-			d2[ i ] = i;
+			d1[ i ] = i + 1;
+			d2[ i ] = i + 1;
 		}
 		mat = matrix( d1, [5,5], 'int16' );
 		out = mean( mat, {
