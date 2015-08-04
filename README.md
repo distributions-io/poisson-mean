@@ -7,7 +7,7 @@ Mean
 The [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="\mathbb{E}\left[ X \right] = \lambda" data-equation="eq:expectation">
-	<img src="" alt="Expected value for a Poisson distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/poisson-mean/575523466a1670fa798c9b86bf098b1812e21757/docs/img/eqn.svg" alt="Expected value for a Poisson distribution.">
 	<br>
 </div>
 
