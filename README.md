@@ -102,7 +102,10 @@ var lambda = [
 	{'x':[9,16]}
 ];
 
-var out = mean( lambda, 'x|1', '|' );
+var out = mean( lambda, {
+	'path': 'x|1',
+	'sep': '|'
+});
 /*
 	[
 		{'x':[9,2]},
